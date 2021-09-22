@@ -1,4 +1,5 @@
 import { AppState } from '../AppState'
+import { saveState } from '../Utils/LocalStorage'
 
 class CartService {
   addItemToCart (item) {
@@ -7,6 +8,7 @@ class CartService {
     for (let i = 0; i < items.length; i++) {
       if (items[i].id === item.id) {
         AppState.itemsForSale[i].stock--
+        saveState()
       }
     }
   }

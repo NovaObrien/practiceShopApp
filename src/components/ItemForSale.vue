@@ -39,17 +39,14 @@ div {
   border-radius: 1rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  max-height: 25vh;
-  max-width: 25vh;
-
+  align-self: auto;
 }
 h1 {
   color: black;
 }
 img {
-  max-width:50%;
-  max-height:50%;
+  max-width:20vw;
+  max-height:50vh;
   border-radius: 1rem;
 
 }

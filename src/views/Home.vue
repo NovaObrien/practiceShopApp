@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <button @click="resetAppData">Reset</button>
     <div>
       <h5>Welcome to</h5>
       <h1>Nova's Food Market</h1>
@@ -18,7 +19,11 @@ export default {
   name: 'Home',
   setup () {
     return {
-      itemsForSale: computed(() => AppState.itemsForSale)
+      itemsForSale: computed(() => AppState.itemsForSale),
+      resetAppData () {
+        localStorage.clear()
+        window.location.reload()
+      }
     }
   },
   components: {
