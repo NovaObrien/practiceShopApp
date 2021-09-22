@@ -15,8 +15,6 @@ class CartService {
       if (cartItems[i].id === item.id) {
         AppState.itemsInCart[i].inCart++
         saveState()
-        console.log(AppState.itemsInCart)
-
         return
       }
     }
@@ -29,7 +27,36 @@ class CartService {
     }
     AppState.itemsInCart.push(newCartItem)
     saveState()
-    console.log(AppState.itemsInCart)
+  }
+
+  removeOneCartItem (cartItem) {
+    let index
+    for (let i = 0; i < AppState.itemsInCart.length; i++) {
+      if (AppState.itemsInCart[i].id === cartItem.id) {
+        index = i
+      }
+    }
+    if (AppState.itemsInCart[index].inCart <= 1) {
+      AppState.itemsInCart.splice(index, 1)
+    } else {
+      AppState.itemsInCart[index].inCart--
+    }
+    const saleIndex = AppState.itemsForSale.findIndex(i => i.id === cartItem.id)
+    AppState.itemsForSale[saleIndex].stock++
+    saveState()
+  }
+
+  removeAllCartItems (cartItem) {
+    let index
+    for (let i = 0; i < AppState.itemsInCart.length; i++) {
+      if (AppState.itemsInCart[i].id === cartItem.id) {
+        index = i
+      }
+    }
+    const saleIndex = AppState.itemsForSale.findIndex(i => i.id === cartItem.id)
+    AppState.itemsForSale[saleIndex].stock += AppState.itemsInCart[index].inCart
+    AppState.itemsInCart.splice(index, 1)
+    saveState()
   }
 }
 export const cartService = new CartService()

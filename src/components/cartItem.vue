@@ -2,8 +2,10 @@
   <div class="cart-item">
     <h1>
     {{cartItem.name}}
-    ${{cartItem.price}}
+    ${{cartItem.price * cartItem.inCart}}
     </h1>
+
+    <p>(Price per unit: ${{cartItem.price}})</p>
 
     <h2>In Cart: {{cartItem.inCart}}</h2>
     <img :src=cartItem.img alt="">
@@ -16,6 +18,7 @@
 </template>
 
 <script>
+import { cartService } from '../Services/cartService'
 export default {
   name: 'CartItem',
   props: {
@@ -23,7 +26,13 @@ export default {
   },
   setup (props) {
     return {
-      cartItem: props.cartItemProp
+      cartItem: props.cartItemProp,
+      removeOne () {
+        cartService.removeOneCartItem(this.cartItem)
+      },
+      removeAll () {
+        cartService.removeAllCartItems(this.cartItem)
+      }
     }
   },
   components: {}
@@ -47,6 +56,7 @@ button {
   background-color: rgb(255, 238, 0);
   border: solid rgba(255, 30, 30, 0.637);
   padding: 1em;
+  margin: 1em;
   font-size: 1em;
   font-weight: bolder;
   border-radius: 1rem;
@@ -59,5 +69,12 @@ button:hover{
   background-color: rgb(201, 188, 5);
 
   border: solid rgba(255, 30, 30, 0.74);
+}
+button:active{
+  color: rgb(5, 5, 5);
+
+  background-color: rgb(255, 238, 1);
+
+  border: solid rgb(255, 30, 30);
 }
 </style>

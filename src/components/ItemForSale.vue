@@ -67,4 +67,11 @@ button:hover{
 
   border: solid rgba(0, 128, 0, 0.404);
 }
+button:active{
+  color: rgb(5, 5, 5);
+
+  background-color: rgb(84, 255, 170);
+
+  border: solid rgba(21, 241, 21, 0.404);
+}
 </style>

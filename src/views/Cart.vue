@@ -1,6 +1,7 @@
 <template>
   <div class="cart">
     <h1>Cart</h1>
+    <h2 v-if="cartItems.length === 0">No Items In Cart. Check out the Home Page For Groceries</h2>
     <cart-item v-for="cartItem in cartItems" :cartItemProp="cartItem" :key="cartItem.id"/>
   </div>
 </template>
