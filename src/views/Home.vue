@@ -4,7 +4,7 @@
     <div>
       <h5>Welcome to</h5>
       <h1>Nova's Food Market</h1>
-      <item-for-sale v-for="item in itemsForSale" :item-for-sale-prop = "item" :key="item.name"/>
+      <item-for-sale v-for="item in itemsForSale" :item-for-sale-prop = "item" :key="item.id"/>
     </div>
   </div>
 </template>
