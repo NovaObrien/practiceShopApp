@@ -1,7 +1,8 @@
 <template>
   <div class="home">
     <div>
-      <h1>Foods 4 U</h1>
+      <h5>Welcome to</h5>
+      <h1>Nova's Food Market</h1>
       <item-for-sale v-for="item in itemsForSale" :item-for-sale-prop = "item" :key="item.name"/>
     </div>
   </div>
@@ -27,11 +28,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-h1 {
-   color: rgb(255, 0, 0);
+.home {
    padding: 1em;
-   border-bottom: solid rgba(128, 0, 0, 0.452);
-   background-color: rgba(255, 232, 130, 0.657);
+   border-bottom: solid rgb(50, 139, 155);
+   background-color: rgba(209, 209, 209, 0.657);
    border-radius: 1em;
+}
+h1 {
+   color: rgb(44, 115, 128);
+  border-bottom: solid rgb(130, 142, 177);
 }
 </style>
