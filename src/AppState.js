@@ -31,6 +31,8 @@ export const AppState = reactive({
     }
   ],
 
-  itemsInCart: []
+  itemsInCart: [],
+
+  total: 0
 
 })

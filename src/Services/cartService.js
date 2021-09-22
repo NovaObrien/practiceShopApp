@@ -14,7 +14,7 @@ class CartService {
     for (let i = 0; i < cartItems.length; i++) {
       if (cartItems[i].id === item.id) {
         AppState.itemsInCart[i].inCart++
-        saveState()
+        this.setTotalCost()
         return
       }
     }
@@ -26,7 +26,7 @@ class CartService {
       img: item.img
     }
     AppState.itemsInCart.push(newCartItem)
-    saveState()
+    this.setTotalCost()
   }
 
   removeOneCartItem (cartItem) {
@@ -43,7 +43,7 @@ class CartService {
     }
     const saleIndex = AppState.itemsForSale.findIndex(i => i.id === cartItem.id)
     AppState.itemsForSale[saleIndex].stock++
-    saveState()
+    this.setTotalCost()
   }
 
   removeAllCartItems (cartItem) {
@@ -56,6 +56,18 @@ class CartService {
     const saleIndex = AppState.itemsForSale.findIndex(i => i.id === cartItem.id)
     AppState.itemsForSale[saleIndex].stock += AppState.itemsInCart[index].inCart
     AppState.itemsInCart.splice(index, 1)
+    this.setTotalCost()
+  }
+
+  setTotalCost () {
+    const arr = AppState.itemsInCart
+    let total = 0
+    for (let i = 0; i < arr.length; i++) {
+      total += (arr[i].price * arr[i].inCart)
+    }
+    console.log(total)
+    AppState.total = total
+
     saveState()
   }
 }

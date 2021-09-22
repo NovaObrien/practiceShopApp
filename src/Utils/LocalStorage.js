@@ -3,7 +3,8 @@ import { AppState } from '../AppState'
 export function saveState () {
   localStorage.setItem('market-shop-practice', JSON.stringify({
     itemsForSale: AppState.itemsForSale,
-    itemsInCart: AppState.itemsInCart
+    itemsInCart: AppState.itemsInCart,
+    total: AppState.total
   }))
 }
 
@@ -12,5 +13,6 @@ export function loadState () {
   if (data) {
     AppState.itemsForSale = data.itemsForSale
     AppState.itemsInCart = data.itemsInCart
+    AppState.total = data.total
   }
 }
